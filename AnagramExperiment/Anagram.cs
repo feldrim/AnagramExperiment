@@ -8,10 +8,8 @@ namespace AnagramExperiment
     {
         private static void Main(string[] args)
         {
-            if (args == null || args.Any())
-                ShowHelpText();
-
             // Commented out for test reasons
+            //if (args == null || !args.Any()) ShowHelpText();
             //var path = args[0];
             //var word = args[1];
 
