@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AnagramExperiment
@@ -8,9 +9,19 @@ namespace AnagramExperiment
     {
         protected internal readonly Dictionary<string, List<string>> Anagrams;
 
-        public AnagramDictionary()
+        public AnagramDictionary(string path)
         {
             Anagrams = new Dictionary<string, List<string>>();
+
+            var file = new FileInfo(path);
+            var fileStream = file.OpenText();
+
+            while (!fileStream.EndOfStream)
+            {
+                var line = fileStream.ReadLine();
+                Add(line);
+            }
+
         }
 
         public void Add(string word)

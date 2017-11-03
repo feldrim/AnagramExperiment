@@ -12,9 +12,7 @@ namespace AnagramExperimentTest
         [TestInitialize]
         public void Initialize()
         {
-            TestDictionary = new AnagramDictionary();
-            TestDictionary.Add("emits");
-            TestDictionary.Add("smite");
+            TestDictionary = new AnagramDictionary(@"..\..\..\AnagramExperiment\Data\Sample.txt");
         }
 
         [TestMethod]
