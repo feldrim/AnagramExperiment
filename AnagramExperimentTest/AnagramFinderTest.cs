@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AnagramExperiment;
+﻿using AnagramExperiment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AnagramExperimentTest
@@ -9,7 +7,6 @@ namespace AnagramExperimentTest
     public class AnagramFinderTest
     {
         public AnagramDictionary TestDictionary;
-        public AnagramFinder AnagramFinderTestInstance;
 
         [TestInitialize]
         public void Initialize()
@@ -18,16 +15,15 @@ namespace AnagramExperimentTest
             TestDictionary.Add("emits");
             TestDictionary.Add("smite");
 
-            AnagramFinderTestInstance = new AnagramFinder();
 
         }
 
         [TestMethod]
         public void EmitsMustHaveTwoAnagramsIncludingItself()
         {
-            var anagrams = AnagramFinderTestInstance.FindAnagram(TestDictionary, "emits");
+            var anagrams = TestDictionary.LookUpWord("emits");
 
-            Assert.AreEqual(2, anagrams.Count());
+            Assert.AreEqual(2, anagrams.Count);
         }
     }
 }
