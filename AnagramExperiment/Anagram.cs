@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AnagramExperiment
 {
@@ -7,6 +8,10 @@ namespace AnagramExperiment
     {
         private static void Main(string[] args)
         {
+            if (args == null || args.Any())
+                ShowHelpText();
+
+            // Commented out for test reasons
             //var path = args[0];
             //var word = args[1];
 
@@ -27,12 +32,16 @@ namespace AnagramExperiment
             Console.WriteLine($"{stopwatch.ElapsedMilliseconds} ms");
 
             foreach (var anagram in anagrams)
-            {
                 Console.WriteLine(anagram);
-            }
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+        }
+
+        private static void ShowHelpText()
+        {
+            Console.WriteLine("Syntax:");
+            Console.WriteLine("AnagramExperiment <path> <word>");
         }
     }
 }
