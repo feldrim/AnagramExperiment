@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AnagramExperimentTest
 {
     [TestClass]
-    public class AnagramFinderTest
+    public class AnagramDictionaryTest
     {
         public AnagramDictionary TestDictionary;
 
