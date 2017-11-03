@@ -49,7 +49,7 @@ namespace AnagramExperiment
 
         private static string SortByCharacters(string word)
         {
-            return string.Concat(word.ToLowerInvariant().ToCharArray().OrderBy(c => c));
+            return string.Concat(word.ToLowerInvariant().OrderBy(c => c));
         }
     }
 }
