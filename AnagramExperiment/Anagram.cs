@@ -3,14 +3,14 @@ using System.Diagnostics;
 
 namespace AnagramExperiment
 {
-    internal class Program
+    internal class Anagram
     {
         private static void Main(string[] args)
         {
             //var path = args[0];
             //var word = args[1];
 
-            const string path = @"..\..\..\AnagramExperiment\Data\Sample.txt";
+            const string path = @"..\..\..\AnagramExperiment\Data\lemmad.txt";
             const string word = "emits";
             var stopwatch = new Stopwatch();
 
