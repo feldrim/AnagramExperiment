@@ -15,27 +15,26 @@ namespace AnagramExperiment
 
         public void Add(string word)
         {
-            var sortedWord = word.ToCharArray().OrderBy(c => c).ToString();
+            var sortedWord = SortByCharacters(word);
 
             if (Anagrams.ContainsKey(sortedWord))
-            {
                 Anagrams[sortedWord].Add(word);
-            }
             else
-            {
-                Anagrams.Add(sortedWord, new List<string> { word });
-            }
+                Anagrams.Add(sortedWord, new List<string> {word});
         }
 
         public List<string> LookUpWord(string word)
         {
-            var sortedWord = word.ToCharArray().OrderBy(c => c).ToString();
+            var sortedWord = SortByCharacters(word);
 
             if (Anagrams.ContainsKey(sortedWord))
-            {
                 return Anagrams[sortedWord];
-            }
             throw new Exception("Word not found.");
+        }
+
+        private static string SortByCharacters(string word)
+        {
+            return string.Concat(word.ToLowerInvariant().ToCharArray().OrderBy(c => c));
         }
     }
 }

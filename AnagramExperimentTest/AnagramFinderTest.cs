@@ -14,8 +14,6 @@ namespace AnagramExperimentTest
             TestDictionary = new AnagramDictionary();
             TestDictionary.Add("emits");
             TestDictionary.Add("smite");
-
-
         }
 
         [TestMethod]
