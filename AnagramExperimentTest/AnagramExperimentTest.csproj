@@ -50,8 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AnagramFinderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnagramExperiment\AnagramExperiment.csproj">
+      <Project>{e20c42f7-35dc-44cf-b491-b86df4df4f9a}</Project>
+      <Name>AnagramExperiment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

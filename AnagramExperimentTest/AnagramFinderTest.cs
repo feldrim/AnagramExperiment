@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AnagramExperiment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AnagramExperimentTest
@@ -7,8 +8,8 @@ namespace AnagramExperimentTest
     [TestClass]
     public class AnagramFinderTest
     {
-        public AnagramExperiment.AnagramDictionary TestDictionary;
-        public AnagramExperiment.AnagramFinder AnagramFinderTestInstance;
+        public AnagramDictionary TestDictionary;
+        public AnagramFinder AnagramFinderTestInstance;
 
         [TestInitialize]
         public void Initialize()
