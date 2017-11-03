@@ -15,7 +15,8 @@ namespace AnagramExperimentTest
         public void Initialize()
         {
             TestDictionary = new AnagramDictionary();
-            TestDictionary.Add("eimst", new List<string> {"emits", "smite"});
+            TestDictionary.Add("emits");
+            TestDictionary.Add("smite");
 
             AnagramFinderTestInstance = new AnagramFinder();
 
