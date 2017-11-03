@@ -13,15 +13,14 @@ namespace AnagramExperiment
         {
             Anagrams = new Dictionary<string, List<string>>();
 
-            var file = new FileInfo(path);
-            var fileStream = file.OpenText();
-
-            while (!fileStream.EndOfStream)
+            using (var fileStream = new FileInfo(path).OpenText())
             {
-                var line = fileStream.ReadLine();
-                Add(line);
+                while (!fileStream.EndOfStream)
+                {
+                    var line = fileStream.ReadLine();
+                    Add(line);
+                }
             }
-
         }
 
         public void Add(string word)
