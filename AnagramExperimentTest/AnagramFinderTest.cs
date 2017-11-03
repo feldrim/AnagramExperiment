@@ -21,8 +21,11 @@ namespace AnagramExperimentTest
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void EmitsMustHaveTwoAnagramsIncludingItself()
         {
+            var anagrams = AnagramFinderTestInstance.FindAnagram(TestDictionary, "emits");
+
+            Assert.AreEqual(2, anagrams.Count());
         }
     }
 }
