@@ -38,7 +38,7 @@ namespace AnagramExperiment
 
         public List<string> LookUpWord(string word, bool includeItself = false)
         {
-            var sortedWord = SortByCharacters(word);
+            var sortedWord = SortByCharacters(word.ToLowerInvariant());
 
             if (_anagrams.ContainsKey(sortedWord))
             {
