@@ -23,7 +23,7 @@ namespace AnagramExperiment
                 Anagrams.Add(sortedWord, new List<string> { word });
         }
 
-        public List<string> LookUpWord(string word, bool includeItself)
+        public List<string> LookUpWord(string word, bool includeItself = false)
         {
             var sortedWord = SortByCharacters(word);
 

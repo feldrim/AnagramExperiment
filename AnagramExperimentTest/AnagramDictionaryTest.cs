@@ -1,4 +1,5 @@
-﻿using AnagramExperiment;
+﻿using System;
+using AnagramExperiment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AnagramExperimentTest
@@ -17,6 +18,13 @@ namespace AnagramExperimentTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception), "Word not found.")]
+        public void ShouldThrowExceptionIfDictionaryDoesntContainWord()
+        {
+            var anagrams = TestDictionary.LookUpWord("sample", true);
+        }
+
+        [TestMethod]
         public void EmitsMustHaveTwoAnagramsIncludingItself()
         {
             var anagrams = TestDictionary.LookUpWord("emits", true);
@@ -27,7 +35,7 @@ namespace AnagramExperimentTest
         [TestMethod]
         public void EmitsMustHaveOneAnagram()
         {
-            var anagrams = TestDictionary.LookUpWord("emits", false);
+            var anagrams = TestDictionary.LookUpWord("emits");
 
             Assert.AreEqual(1, anagrams.Count);
         }
