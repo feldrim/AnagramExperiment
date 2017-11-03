@@ -20,15 +20,17 @@ namespace AnagramExperiment
             if (Anagrams.ContainsKey(sortedWord))
                 Anagrams[sortedWord].Add(word);
             else
-                Anagrams.Add(sortedWord, new List<string> {word});
+                Anagrams.Add(sortedWord, new List<string> { word });
         }
 
-        public List<string> LookUpWord(string word)
+        public List<string> LookUpWord(string word, bool includeItself)
         {
             var sortedWord = SortByCharacters(word);
 
             if (Anagrams.ContainsKey(sortedWord))
-                return Anagrams[sortedWord];
+            {
+                return includeItself ? Anagrams[sortedWord] : Anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
+            }
             throw new Exception("Word not found.");
         }
 

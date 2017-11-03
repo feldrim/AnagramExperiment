@@ -19,9 +19,17 @@ namespace AnagramExperimentTest
         [TestMethod]
         public void EmitsMustHaveTwoAnagramsIncludingItself()
         {
-            var anagrams = TestDictionary.LookUpWord("emits");
+            var anagrams = TestDictionary.LookUpWord("emits", true);
 
             Assert.AreEqual(2, anagrams.Count);
+        }
+
+        [TestMethod]
+        public void EmitsMustHaveOneAnagram()
+        {
+            var anagrams = TestDictionary.LookUpWord("emits", false);
+
+            Assert.AreEqual(1, anagrams.Count);
         }
     }
 }
