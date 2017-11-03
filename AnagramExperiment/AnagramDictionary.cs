@@ -7,18 +7,17 @@ namespace AnagramExperiment
 {
     public class AnagramDictionary
     {
-        protected internal readonly Dictionary<string, List<string>> Anagrams;
+        private readonly Dictionary<string, List<string>> _anagrams;
 
         public AnagramDictionary(string path)
         {
-            Anagrams = new Dictionary<string, List<string>>();
+            _anagrams = new Dictionary<string, List<string>>();
 
             using (var fileStream = new FileInfo(path).OpenText())
             {
                 while (!fileStream.EndOfStream)
                 {
-                    var line = fileStream.ReadLine();
-                    Add(line);
+                    Add(fileStream.ReadLine());
                 }
             }
         }
@@ -27,19 +26,23 @@ namespace AnagramExperiment
         {
             var sortedWord = SortByCharacters(word);
 
-            if (Anagrams.ContainsKey(sortedWord))
-                Anagrams[sortedWord].Add(word);
+            if (_anagrams.ContainsKey(sortedWord))
+            {
+                if (!_anagrams[sortedWord].Contains(word))
+                    _anagrams[sortedWord].Add(word);
+            }
+
             else
-                Anagrams.Add(sortedWord, new List<string> { word });
+                _anagrams.Add(sortedWord, new List<string> { word });
         }
 
         public List<string> LookUpWord(string word, bool includeItself = false)
         {
             var sortedWord = SortByCharacters(word);
 
-            if (Anagrams.ContainsKey(sortedWord))
+            if (_anagrams.ContainsKey(sortedWord))
             {
-                return includeItself ? Anagrams[sortedWord] : Anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
+                return includeItself ? _anagrams[sortedWord] : _anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
             }
             throw new Exception("Word not found.");
         }

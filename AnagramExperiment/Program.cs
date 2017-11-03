@@ -20,7 +20,7 @@ namespace AnagramExperiment
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedMilliseconds} ms");
 
-            Console.Write($"Looking up anagrams of {word}...\t");
+            Console.Write($"Looking up anagrams of '{word}'...\t");
             stopwatch.Restart();
             var anagrams = dictionary.LookUpWord(word);
             stopwatch.Stop();
