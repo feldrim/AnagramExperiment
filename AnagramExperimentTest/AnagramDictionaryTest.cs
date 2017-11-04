@@ -19,7 +19,7 @@ namespace AnagramExperimentTest
         [ExpectedException(typeof(Exception), "Word not found.")]
         public void ShouldThrowExceptionIfDictionaryDoesntContainWord()
         {
-            var anagrams = TestDictionary.LookUpWord("sample", true);
+            var unused = TestDictionary.LookUpWord("sample", true);
         }
 
         [TestMethod]
