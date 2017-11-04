@@ -20,6 +20,9 @@ namespace AnagramExperiment
                     Add(fileStream.ReadLine());
                 }
             }
+
+            // Added for demonstration of the overload Add method
+            //Add(File.ReadAllLines(path));
         }
 
         public void Add(string word)
@@ -34,6 +37,14 @@ namespace AnagramExperiment
 
             else
                 _anagrams.Add(sortedWord, new List<string> { word });
+        }
+
+        public void Add(string[] words)
+        {
+            foreach (var word in words)
+            {
+                Add(word);
+            }
         }
 
         public List<string> LookUpWord(string word, bool includeItself = false)
