@@ -16,9 +16,7 @@ namespace AnagramExperiment
             using (var fileStream = new FileInfo(path).OpenText())
             {
                 while (!fileStream.EndOfStream)
-                {
                     Add(fileStream.ReadLine());
-                }
             }
 
             // Added for demonstration of the overload Add method
@@ -36,15 +34,15 @@ namespace AnagramExperiment
             }
 
             else
-                _anagrams.Add(sortedWord, new List<string> { word });
+            {
+                _anagrams.Add(sortedWord, new List<string> {word});
+            }
         }
 
         public void Add(string[] words)
         {
             foreach (var word in words)
-            {
                 Add(word);
-            }
         }
 
         public List<string> LookUpWord(string word, bool includeItself = false)
@@ -52,9 +50,9 @@ namespace AnagramExperiment
             var sortedWord = SortByCharacters(word.ToLowerInvariant());
 
             if (_anagrams.ContainsKey(sortedWord))
-            {
-                return includeItself ? _anagrams[sortedWord] : _anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
-            }
+                return includeItself
+                    ? _anagrams[sortedWord]
+                    : _anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
             throw new Exception("Word not found.");
         }
 
