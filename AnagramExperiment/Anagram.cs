@@ -10,6 +10,7 @@ namespace AnagramExperiment
         {
             if (args == null || !args.Any()) ShowHelpText();
 
+            // ReSharper disable once PossibleNullReferenceException
             var path = args[0];
             var word = args[1];
 
