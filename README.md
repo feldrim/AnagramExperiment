@@ -24,9 +24,8 @@ The repository contains two projects:
 
 It's written in C# with Visual Studio IDE. So all you need to build the solution is open the AnagramExperiment.sln file on a Visual Studio IDE.
 
-I've used only Resharpe for unit testing. It's a simple project and contains only tests for design. No tests for validation of inputs or other purposes involved on purpose.
+I've used only Resharper for unit testing. It's a simple project and contains only tests for design. No tests for validation of inputs or other purposes involved on purpose.
 
 ## TO-DO
-* TestInitialize method was modified to check if it can read the text file and converted to the anagram dictionary. The mock AnagramDictionary object shall be created as it was before.
 * The need for other tests will be considered.
 * Input validation will be added.
