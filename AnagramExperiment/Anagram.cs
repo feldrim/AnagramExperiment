@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AnagramExperiment
 {
@@ -7,13 +8,11 @@ namespace AnagramExperiment
     {
         private static void Main(string[] args)
         {
-            // Commented out for test reasons
-            //if (args == null || !args.Any()) ShowHelpText();
-            //var path = args[0];
-            //var word = args[1];
+            if (args == null || !args.Any()) ShowHelpText();
 
-            const string path = @"..\..\..\AnagramExperiment\Data\lemmad.txt";
-            const string word = "emits";
+            var path = args[0];
+            var word = args[1];
+
             var stopwatch = new Stopwatch();
 
             Console.Write("Creating Anagram Dictionary...\t");
@@ -39,6 +38,7 @@ namespace AnagramExperiment
         {
             Console.WriteLine("Syntax:");
             Console.WriteLine("AnagramExperiment <path> <word>");
+            Environment.Exit(0);
         }
     }
 }
