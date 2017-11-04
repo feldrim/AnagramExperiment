@@ -12,7 +12,7 @@ namespace AnagramExperimentTest
         [TestInitialize]
         public void Initialize()
         {
-            TestDictionary = new AnagramDictionary(@"..\..\..\AnagramExperiment\Data\Sample.txt");
+            TestDictionary = new AnagramDictionary(@"..\..\Sample.txt");
         }
 
         [TestMethod]
