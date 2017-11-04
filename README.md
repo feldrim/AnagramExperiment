@@ -1,12 +1,14 @@
 # AnagramExperiment
 
 ## Motivation
-This repository is solely intended to solve [a problem by Helmes](https://testyourself.helmes.ee/), which I've came across through an Instagram ad of [Work in Estonia](https://www.workinestonia.com/).
+This repository is solely intended to solve [a problem by Helmes](https://testyourself.helmes.ee/), which I've come across through an Instagram ad by [Work in Estonia](https://www.workinestonia.com/).
 
 ## Problem
 As descibed by Helmes, the problem is to write a program wich takes two inputs: 
-1. The path of a word list to parse and look up
-2. The word to look up anagrams in the given word list
+1. The path of a word list
+2. The word
+
+The output of the program is the anagrams of the given word in the word list.
 
 ## Methodology
 * I've used TDD for designing the application, which helped me create "the most" simple, working and readable architecture and code.
