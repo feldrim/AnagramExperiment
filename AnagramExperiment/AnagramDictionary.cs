@@ -50,12 +50,18 @@ namespace AnagramExperiment
         public List<string> LookUpWord(string word, bool includeItself = false)
         {
             var sortedWord = SortByCharacters(word.ToLowerInvariant());
-
-            if (_anagrams.ContainsKey(sortedWord))
-                return includeItself
-                    ? _anagrams[sortedWord]
-                    : _anagrams[sortedWord].Where(anagram => !anagram.Equals(word)).ToList();
-            throw new Exception("Word not found.");
+            
+            List<string> result;
+            if (includeItself)
+            {
+                _anagrams.TryGetValue(sortedWord, out result);
+            }
+            else
+            {
+                _anagrams.TryGetValue(sortedWord, out result);
+                result = result?.Where(anagram => !anagram.Equals(word)).ToList();
+            }
+            return result?? new List<string>();
         }
 
         private static string SortByCharacters(string word)

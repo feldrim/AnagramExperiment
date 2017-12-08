@@ -16,10 +16,11 @@ namespace AnagramExperimentTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "Word not found.")]
-        public void ShouldThrowExceptionIfDictionaryDoesntContainWord()
+        public void ShouldReturnEmptyListIfNoResultFound()
         {
-            var unused = TestDictionary.LookUpWord("sample", true);
+            var result = TestDictionary.LookUpWord("sample", true);
+
+            Assert.AreEqual(0, result.Count);
         }
 
         [TestMethod]
