@@ -16,6 +16,13 @@ namespace AnagramExperimentTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException), "File not found.")]
+        public void ShouldThrowExceptionWhenFileNotFound()
+        {
+            var dummy = new AnagramDictionary(@"IncorrectPath.txt");
+        }
+        
+        [TestMethod]
         public void ShouldReturnEmptyListIfNoResultFound()
         {
             var result = TestDictionary.LookUpWord("sample", true);
