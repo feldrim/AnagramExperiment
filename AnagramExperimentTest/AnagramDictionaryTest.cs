@@ -25,9 +25,9 @@ namespace AnagramExperimentTest
         [TestMethod]
         public void ShouldReturnEmptyListIfNoResultFound()
         {
-            var result = TestDictionary.LookUpWord("sample", true);
+            var anagrams = TestDictionary.LookUpWord("sample", true);
 
-            Assert.AreEqual(0, result.Count);
+            Assert.AreEqual(0, anagrams.Count);
         }
 
         [TestMethod]
