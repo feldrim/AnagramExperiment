@@ -11,6 +11,8 @@ namespace AnagramExperiment
 
         public AnagramDictionary(string path)
         {
+            ValidatePath(path);
+            
             _anagrams = new Dictionary<string, List<string>>();
 
             using (var fileStream = new FileInfo(path).OpenText())
@@ -59,6 +61,11 @@ namespace AnagramExperiment
         private static string SortByCharacters(string word)
         {
             return string.Concat(word.ToLowerInvariant().OrderBy(c => c));
+        }
+        
+        private static void ValidatePath(string path)
+        {
+            if (!new FileInfo(path).Exists) throw new FileNotFoundException("File not found.");
         }
     }
 }
