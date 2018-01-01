@@ -29,4 +29,4 @@ I've used only Resharper for unit testing. It's a simple project and contains on
 ## TO-DO
 * The need for other tests will be considered.
 * ~~Input validation will be added.~~
-* Performance improvements (if possible)
+* ~~Performance improvements (if possible) ~~
