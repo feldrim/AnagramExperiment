@@ -21,7 +21,7 @@ namespace AnagramExperimentTest
         {
             var dummy = new AnagramDictionary(@"IncorrectPath.txt");
         }
-        
+
         [TestMethod]
         public void ShouldReturnEmptyListIfNoResultFound()
         {

@@ -29,14 +29,10 @@ namespace AnagramExperiment
             Console.WriteLine($"{stopwatch.ElapsedMilliseconds} ms");
 
             if (anagrams.Any())
-            {
                 foreach (var anagram in anagrams)
                     Console.WriteLine(anagram);
-            }
             else
-            {
                 Console.WriteLine("No anagram found.");
-            }
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

@@ -21,9 +21,7 @@ namespace AnagramExperiment
             var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
 
             for (var i = 0; i < parallelTaskCount; i++)
-            {
                 taskFactory.StartNew(() => { Parallel.ForEach(File.ReadLines(path), Add); });
-            }
         }
 
         public void Add(string word)
@@ -37,7 +35,7 @@ namespace AnagramExperiment
             }
             else
             {
-                _anagrams.TryAdd(sortedWord, new List<string> { word });
+                _anagrams.TryAdd(sortedWord, new List<string> {word});
             }
         }
 
