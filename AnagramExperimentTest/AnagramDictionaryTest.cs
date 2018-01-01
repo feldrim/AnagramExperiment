@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using AnagramExperiment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -44,6 +44,12 @@ namespace AnagramExperimentTest
             var anagrams = TestDictionary.LookUpWord("emits");
 
             Assert.AreEqual(1, anagrams.Count);
+        }
+
+        [TestMethod]
+        public void DataShouldBeLoadedParallel()
+        {
+            var dictionary = new AnagramDictionaryParallel(@"..\..\lemmad.txt");
         }
     }
 }

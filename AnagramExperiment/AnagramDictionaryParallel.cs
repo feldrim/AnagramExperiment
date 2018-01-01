@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,19 +9,13 @@ namespace AnagramExperiment
 {
     public class AnagramDictionaryParallel
     {
-        private readonly Dictionary<string, List<string>> _anagrams;
+        private readonly ConcurrentDictionary<string, List<string>> _anagrams;
 
         public AnagramDictionaryParallel(string path)
         {
             ValidatePath(path);
             
-            _anagrams = new Dictionary<string, List<string>>();
-
-            using (var fileStream = new FileInfo(path).OpenText())
-            {
-                while (!fileStream.EndOfStream)
-                    Add(fileStream.ReadLine());
-            }
+            _anagrams = new ConcurrentDictionary<string, List<string>>();
 
             Parallel.ForEach(File.ReadLines(path), Add);
         }
@@ -37,7 +32,7 @@ namespace AnagramExperiment
 
             else
             {
-                _anagrams.Add(sortedWord, new List<string> {word});
+                _anagrams.TryAdd(sortedWord, new List<string> {word});
             }
         }
 
