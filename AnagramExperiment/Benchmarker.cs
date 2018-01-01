@@ -4,7 +4,7 @@ namespace AnagramExperiment
 {
     public class Benchmarker
     {
-        string path = @"..\..\..\AnagramExperimentTest\Sample.txt";
+        string path = @"..\..\..\AnagramExperimentTest\lemmad.txt";
         string word = "sample";
 
         [Benchmark]
