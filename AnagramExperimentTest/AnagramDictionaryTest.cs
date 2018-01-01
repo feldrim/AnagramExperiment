@@ -45,11 +45,5 @@ namespace AnagramExperimentTest
 
             Assert.AreEqual(1, anagrams.Count);
         }
-
-        [TestMethod]
-        public void DataShouldBeLoadedParallel()
-        {
-            var dictionary = new AnagramDictionaryParallel(@"..\..\lemmad.txt");
-        }
     }
 }

@@ -137,10 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnagramDictionaryParallel.cs" />
     <Compile Include="AnagramDictionary.cs" />
     <Compile Include="Anagram.cs" />
-    <Compile Include="Benchmarker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
