@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,13 @@ namespace AnagramExperiment
 
             _anagrams = new ConcurrentDictionary<string, List<string>>();
 
-            Parallel.ForEach(File.ReadLines(path), Add);
+            var parallelTaskCount = Environment.ProcessorCount;
+            var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
+            
+            for (var i = 0; i < parallelTaskCount; i++)
+            {
+                taskFactory.StartNew(() => { Parallel.ForEach(File.ReadLines(path), Add); });
+            }
         }
 
         public void Add(string word)
