@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +28,6 @@ namespace AnagramExperiment
                 if (!_anagrams[sortedWord].Contains(word))
                     _anagrams[sortedWord].Add(word);
             }
-
             else
             {
                 _anagrams.TryAdd(sortedWord, new List<string> {word});
