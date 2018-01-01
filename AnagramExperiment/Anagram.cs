@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AnagramExperiment
 {
@@ -7,14 +8,11 @@ namespace AnagramExperiment
     {
         public static void Main(string[] args)
         {
-            //if (args == null || !args.Any()) ShowHelpText();
+            if (args == null || args.Length != 2) ShowHelpText();
 
-            //// ReSharper disable once PossibleNullReferenceException
-            //var path = args[0];
-            //var word = args[1];
-
-            const string path = @"..\..\..\AnagramExperimentTest\lemmad.txt";
-            const string word = "sample";
+            // ReSharper disable once PossibleNullReferenceException
+            var path = args[0];
+            var word = args[1];
 
             var stopwatch = new Stopwatch();
 
@@ -30,8 +28,15 @@ namespace AnagramExperiment
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedMilliseconds} ms");
 
-            foreach (var anagram in anagrams)
-                Console.WriteLine(anagram);
+            if (anagrams.Any())
+            {
+                foreach (var anagram in anagrams)
+                    Console.WriteLine(anagram);
+            }
+            else
+            {
+                Console.WriteLine("No anagram found.");
+            }
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
@@ -39,7 +44,7 @@ namespace AnagramExperiment
 
         private static void ShowHelpText()
         {
-            Console.WriteLine("Syntax:");
+            Console.WriteLine("SYNTAX:");
             Console.WriteLine("AnagramExperiment <path> <word>");
             Environment.Exit(0);
         }
