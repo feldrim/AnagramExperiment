@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace AnagramExperiment
 {
-    internal class Anagram
+    public static class Anagram
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             if (args == null || !args.Any()) ShowHelpText();
 
