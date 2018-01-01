@@ -19,7 +19,7 @@ namespace AnagramExperiment
 
             var parallelTaskCount = Environment.ProcessorCount;
             var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
-            
+
             for (var i = 0; i < parallelTaskCount; i++)
             {
                 taskFactory.StartNew(() => { Parallel.ForEach(File.ReadLines(path), Add); });
@@ -41,20 +41,13 @@ namespace AnagramExperiment
             }
         }
 
-        public List<string> LookUpWord(string word, bool includeItself = false)
+        public List<string> LookUpWord(string word)
         {
             var sortedWord = SortByCharacters(word.ToLowerInvariant());
 
-            List<string> result;
-            if (includeItself)
-            {
-                _anagrams.TryGetValue(sortedWord, out result);
-            }
-            else
-            {
-                _anagrams.TryGetValue(sortedWord, out result);
-                result = result?.Where(anagram => !anagram.Equals(word)).ToList();
-            }
+            _anagrams.TryGetValue(sortedWord, out var result);
+            result = result?.Where(anagram => !anagram.Equals(word)).ToList();
+
             return result ?? new List<string>();
         }
 
