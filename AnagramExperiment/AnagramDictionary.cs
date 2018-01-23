@@ -17,7 +17,7 @@ namespace AnagramExperiment
 
             _anagrams = new ConcurrentDictionary<string, List<string>>();
 
-            var parallelTaskCount = Environment.ProcessorCount;
+            var parallelTaskCount = Environment.ProcessorCount;          
             var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
 
             for (var i = 0; i < parallelTaskCount; i++)
@@ -51,7 +51,9 @@ namespace AnagramExperiment
 
         private static string SortByCharacters(string word)
         {
-            return string.Concat(word.ToLowerInvariant().OrderBy(c => c));
+            var res = word.ToLowerInvariant().ToCharArray();
+            Array.Sort(res);
+            return new string(res);
         }
 
         private static void ValidatePath(string path)
