@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace AnagramExperiment
     {
         public static void Main(string[] args)
         {
-            if (args == null || args.Length != 2) ShowHelpText();
+            CheckArguments(args);
 
             // ReSharper disable once PossibleNullReferenceException
             var path = args[0];
@@ -38,8 +39,11 @@ namespace AnagramExperiment
             Console.ReadKey();
         }
 
-        private static void ShowHelpText()
+        private static void CheckArguments(IReadOnlyCollection<string> arguments)
         {
+            // ReSharper disable once PossibleNullReferenceException
+            if (arguments != null || arguments.Count == 2) return;
+
             Console.WriteLine("SYNTAX:");
             Console.WriteLine("AnagramExperiment <path> <word>");
             Environment.Exit(0);
