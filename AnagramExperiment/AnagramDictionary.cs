@@ -37,7 +37,7 @@ namespace AnagramExperiment
 
         public List<string> LookUpWord(string word)
         {
-            var sortedWord = SortByCharacters(word.ToLowerInvariant());
+            var sortedWord = SortByCharacters(word);
 
             _anagrams.TryGetValue(sortedWord, out var result);
             result = result?.Where(anagram => !anagram.Equals(word)).ToList();
