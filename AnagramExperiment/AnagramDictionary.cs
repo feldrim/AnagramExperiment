@@ -17,11 +17,7 @@ namespace AnagramExperiment
 
             _anagrams = new ConcurrentDictionary<string, List<string>>();
 
-            var parallelTaskCount = Environment.ProcessorCount;          
-            var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
-
-            for (var i = 0; i < parallelTaskCount; i++)
-                taskFactory.StartNew(() => { Parallel.ForEach(File.ReadLines(path), Add); });
+            FillDictionary(path);
         }
 
         public void Add(string word)
@@ -59,6 +55,15 @@ namespace AnagramExperiment
         private static void ValidatePath(string path)
         {
             if (!new FileInfo(path).Exists) throw new FileNotFoundException("File not found.");
+        }
+
+        private void FillDictionary(string path)
+        {
+            var parallelTaskCount = Environment.ProcessorCount;
+            var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
+
+            for (var i = 0; i < parallelTaskCount; i++)
+                taskFactory.StartNew(() => { Parallel.ForEach(File.ReadLines(path), Add); });
         }
     }
 }
