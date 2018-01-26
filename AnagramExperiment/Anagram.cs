@@ -42,7 +42,7 @@ namespace AnagramExperiment
         private static void CheckArguments(IReadOnlyCollection<string> arguments)
         {
             // ReSharper disable once PossibleNullReferenceException
-            if (arguments != null || arguments.Count == 2) return;
+            if (arguments != null && arguments.Count == 2) return;
 
             Console.WriteLine("SYNTAX:");
             Console.WriteLine("AnagramExperiment <path> <word>");
