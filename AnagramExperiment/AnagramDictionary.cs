@@ -11,14 +11,12 @@ namespace AnagramExperiment
     public class AnagramDictionary
     {
         private readonly ConcurrentDictionary<string, HashSet<string>> _anagrams;
-        private readonly TaskFactory _taskFactory;
         private readonly BlockingCollection<string> _words;
 
         public AnagramDictionary(string path)
         {
             var fileInfo = GetValidatedPath(path);
 
-            _taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
             _anagrams = new ConcurrentDictionary<string, HashSet<string>>();
             _words = new BlockingCollection<string>();
 
@@ -70,12 +68,14 @@ namespace AnagramExperiment
 
         private void FillDictionary(string path)
         {
-            var readTask = _taskFactory.StartNew(() =>
+            var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
+
+            var readTask = taskFactory.StartNew(() =>
                 Parallel.ForEach(File.ReadLines(path, Encoding.UTF8).AsParallel(), _words.Add));
             Task.WaitAll(readTask);
             _words.CompleteAdding();
 
-            var fillTask = _taskFactory.StartNew(() => Parallel.ForEach(_words, Add));
+            var fillTask = taskFactory.StartNew(() => Parallel.ForEach(_words, Add));
             Task.WaitAll(fillTask);
         }
     }
