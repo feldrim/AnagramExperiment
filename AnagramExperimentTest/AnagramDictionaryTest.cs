@@ -23,6 +23,22 @@ namespace AnagramExperimentTest
         }
 
         [TestMethod]
+        public void ShouldReturnWordCountCorrect()
+        {
+            var count = TestDictionary.GetWordCount();
+
+            Assert.AreEqual(83, count);
+        }
+
+        [TestMethod]
+        public void ShouldReturnDictionaryCountCorrect()
+        {
+            var count = TestDictionary.GetDictionaryCount();
+
+            Assert.AreEqual(82, count);
+        }
+
+        [TestMethod]
         public void ShouldReturnEmptyListIfNoResultFound()
         {
             var anagrams = TestDictionary.LookUpWord("sample");
