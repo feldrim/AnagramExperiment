@@ -31,7 +31,7 @@ namespace AnagramExperiment
 
             if (anagrams.Any())
                 foreach (var anagram in anagrams)
-                    Console.WriteLine(anagram);
+                    Console.WriteLine($"- {anagram}");
             else
                 Console.WriteLine("No anagram found.");
 
