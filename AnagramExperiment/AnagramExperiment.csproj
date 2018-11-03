@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AnagramDictionary.cs" />
     <Compile Include="Anagram.cs" />
+    <Compile Include="Profiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
