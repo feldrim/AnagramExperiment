@@ -7,8 +7,8 @@ namespace AnagramExperiment
    public class Profiler : IDisposable
    {
       private bool _disposed;
-      private Stopwatch _stopWatch;
       private long _elapsed;
+      private Stopwatch _stopWatch;
 
       public Profiler() : this("Untitled")
       {
@@ -31,7 +31,7 @@ namespace AnagramExperiment
       public void Print(string comment)
       {
          if (_disposed) throw new ObjectDisposedException(GetType().Name);
-         _elapsed += _stopWatch.ElapsedMilliseconds;      
+         _elapsed += _stopWatch.ElapsedMilliseconds;
          Console.WriteLine("  {0,-30} {1,10} ms", Crop(comment, 30), _stopWatch.ElapsedMilliseconds);
          _stopWatch.Restart();
       }

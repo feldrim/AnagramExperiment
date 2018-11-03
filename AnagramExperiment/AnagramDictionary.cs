@@ -26,7 +26,7 @@ namespace AnagramExperiment
          if (_anagramDictionary.ContainsKey(sortedWord))
             _anagramDictionary[sortedWord].Add(word);
          else
-            _anagramDictionary[sortedWord] = new HashSet<string> { word };
+            _anagramDictionary[sortedWord] = new HashSet<string> {word};
       }
 
       protected internal void AddToWordList(string word)
@@ -39,10 +39,8 @@ namespace AnagramExperiment
          _inMemoryWordList.CompleteAdding();
       }
 
-      protected internal IEnumerable<string> GetWordList()
-      {
-         return new ReadOnlyCollection<string>(_inMemoryWordList.ToList());
-      }
+      protected internal IEnumerable<string> GetWordList() =>
+         new ReadOnlyCollection<string>(_inMemoryWordList.ToList());
 
       public HashSet<string> LookUpWord(string word)
       {
