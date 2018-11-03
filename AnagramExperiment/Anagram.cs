@@ -11,12 +11,12 @@ namespace AnagramExperiment
             CheckArguments(args);
 
             // ReSharper disable once PossibleNullReferenceException
-            var path = args[0];
-            var word = args[1];
+           var path = args[0];
+           var word = args[1];
 
            using (var profiler = new Profiler("Anagram experiment"))
            {
-              var dictionary = AnagramDictionary.Create(path);
+              var dictionary = AnagramDictionary.Create().WithFile(path);
               profiler.Print("Creating anagram dictionary");
               
               var anagrams = dictionary.LookUpWord(word);

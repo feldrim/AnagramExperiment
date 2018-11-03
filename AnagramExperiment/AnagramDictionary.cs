@@ -1,87 +1,68 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.IO;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnagramExperiment
 {
-    public class AnagramDictionary
-    {
-        private readonly ConcurrentDictionary<string, HashSet<string>> _anagrams;
-        private readonly BlockingCollection<string> _words;
+   public class AnagramDictionary
+   {
+      private readonly ConcurrentDictionary<string, HashSet<string>> _anagramDictionary;
+      private readonly BlockingCollection<string> _inMemoryWordList;
 
-        private AnagramDictionary(string path)
-        {
-            var fileInfo = GetValidatedPath(path);
+      private AnagramDictionary()
+      {
+         _anagramDictionary = new ConcurrentDictionary<string, HashSet<string>>();
+         _inMemoryWordList = new BlockingCollection<string>();
+      }
 
-            _anagrams = new ConcurrentDictionary<string, HashSet<string>>();
-            _words = new BlockingCollection<string>();
+      public static AnagramDictionary Create() => new AnagramDictionary();
 
-            FillDictionary(fileInfo.FullName);
-        }
+      public void AddToDictionary(string word)
+      {
+         var sortedWord = SortByCharacters(word);
 
-       public static AnagramDictionary Create(string path)
-       {
-          return new AnagramDictionary(path);
-       }
+         if (_anagramDictionary.ContainsKey(sortedWord))
+            _anagramDictionary[sortedWord].Add(word);
+         else
+            _anagramDictionary[sortedWord] = new HashSet<string> { word };
+      }
 
-        public void Add(string word)
-        {
-            var sortedWord = SortByCharacters(word);
+      protected internal void AddToWordList(string word)
+      {
+         _inMemoryWordList.Add(word);
+      }
 
-            if (_anagrams.ContainsKey(sortedWord))
-                _anagrams[sortedWord].Add(word);
-            else
-                _anagrams[sortedWord] = new HashSet<string> {word};
-        }
+      protected internal void CompleteWordList()
+      {
+         _inMemoryWordList.CompleteAdding();
+      }
 
-        public HashSet<string> LookUpWord(string word)
-        {
-            var sortedWord = SortByCharacters(word);
+      protected internal IEnumerable<string> GetWordList()
+      {
+         return new ReadOnlyCollection<string>(_inMemoryWordList.ToList());
+      }
 
-            _anagrams.TryGetValue(sortedWord, out var result);
-            result?.Remove(word);
+      public HashSet<string> LookUpWord(string word)
+      {
+         var sortedWord = SortByCharacters(word);
 
-            return result ?? new HashSet<string>();
-        }
+         _anagramDictionary.TryGetValue(sortedWord, out var result);
+         result?.Remove(word);
 
-        public int GetDictionaryCount()
-        {
-            return _anagrams.Count;
-        }
+         return result ?? new HashSet<string>();
+      }
 
-        public int GetWordCount()
-        {
-            return _words.Count;
-        }
+      public int GetDictionaryCount() => _anagramDictionary.Count;
 
-        private static string SortByCharacters(string word)
-        {
-            var res = word.ToLowerInvariant().ToCharArray();
-            Array.Sort(res);
-            return new string(res);
-        }
+      public int GetWordCount() => _inMemoryWordList.Count;
 
-        private static FileInfo GetValidatedPath(string path)
-        {
-            if (!new FileInfo(path).Exists) throw new FileNotFoundException("File not found.");
-            return new FileInfo(path);
-        }
-
-        private void FillDictionary(string path)
-        {
-            var taskFactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.None);
-
-            var readTask = taskFactory.StartNew(() =>
-                Parallel.ForEach(File.ReadLines(path, Encoding.UTF8).AsParallel(), _words.Add));
-            Task.WaitAll(readTask);
-            _words.CompleteAdding();
-
-            var fillTask = taskFactory.StartNew(() => Parallel.ForEach(_words, Add));
-            Task.WaitAll(fillTask);
-        }
-    }
+      private static string SortByCharacters(string word)
+      {
+         var res = word.ToLowerInvariant().ToCharArray();
+         Array.Sort(res);
+         return new string(res);
+      }
+   }
 }
