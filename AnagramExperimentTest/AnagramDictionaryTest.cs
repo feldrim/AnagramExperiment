@@ -12,14 +12,14 @@ namespace AnagramExperimentTest
         [TestInitialize]
         public void Initialize()
         {
-            TestDictionary = new AnagramDictionary(@"..\..\Sample.txt");
+            TestDictionary = AnagramDictionary.Create(@"..\..\Sample.txt");
         }
 
         [TestMethod]
         [ExpectedException(typeof(FileNotFoundException), "File not found.")]
         public void ShouldThrowExceptionWhenFileNotFound()
         {
-            var dummy = new AnagramDictionary(@"IncorrectPath.txt");
+            var dummy = AnagramDictionary.Create(@"IncorrectPath.txt");
         }
 
         [TestMethod]
