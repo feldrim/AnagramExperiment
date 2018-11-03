@@ -13,7 +13,7 @@ namespace AnagramExperiment
         private readonly ConcurrentDictionary<string, HashSet<string>> _anagrams;
         private readonly BlockingCollection<string> _words;
 
-        public AnagramDictionary(string path)
+        private AnagramDictionary(string path)
         {
             var fileInfo = GetValidatedPath(path);
 
@@ -22,6 +22,11 @@ namespace AnagramExperiment
 
             FillDictionary(fileInfo.FullName);
         }
+
+       public static AnagramDictionary Create(string path)
+       {
+          return new AnagramDictionary(path);
+       }
 
         public void Add(string word)
         {

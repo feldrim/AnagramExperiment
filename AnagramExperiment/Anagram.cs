@@ -19,7 +19,7 @@ namespace AnagramExperiment
 
             Console.Write("Creating Anagram Dictionary...\t");
             stopwatch.Start();
-            var dictionary = new AnagramDictionary(path);
+            var dictionary = AnagramDictionary.Create(path);
             stopwatch.Stop();
             Console.WriteLine($"{stopwatch.ElapsedMilliseconds} ms");
 
