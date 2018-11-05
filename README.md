@@ -1,4 +1,5 @@
 # AnagramExperiment
+[![Build status](https://ci.appveyor.com/api/projects/status/h67ynlk4ooykhvj2?svg=true)](https://ci.appveyor.com/project/feldrim/anagramexperiment)
 
 ## Motivation
 This repository is solely intended to solve [a problem by Helmes](https://testyourself.helmes.ee/), which I've come across through an Instagram ad by [Work in Estonia](https://www.workinestonia.com/).
