@@ -1,5 +1,6 @@
 # AnagramExperiment
 [![Build status](https://ci.appveyor.com/api/projects/status/h67ynlk4ooykhvj2?svg=true)](https://ci.appveyor.com/project/feldrim/anagramexperiment)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment?ref=badge_shield)
 
 ## Motivation
 This repository is solely intended to solve [a problem by Helmes](https://testyourself.helmes.ee/), which I've come across through an Instagram ad by [Work in Estonia](https://www.workinestonia.com/).
@@ -31,3 +32,7 @@ I've used only Resharper for unit testing. It's a simple project and contains on
 * The need for other tests will be considered.
 * ~~Input validation will be added.~~
 * ~~Performance improvements (if possible)~~
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment?ref=badge_large)
