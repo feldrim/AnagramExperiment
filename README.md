@@ -1,5 +1,5 @@
 # AnagramExperiment
-[![Build status](https://ci.appveyor.com/api/projects/status/h67ynlk4ooykhvj2/branch/master?svg=true)](https://ci.appveyor.com/project/feldrim/AnagramExperiment?branch=master)
+[![Build status](https://ci.appveyor.com/api/projects/status/sy9dcoqp5iiudybn/branch/master?svg=true)](https://ci.appveyor.com/project/feldrim/anagramexperiment/branch/master)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment?ref=badge_shield)
 
 ## Motivation
