@@ -1,5 +1,5 @@
 # AnagramExperiment
-[![Build Status](https://travis-ci.org/feldrim/AnagramExperiment.svg?branch=master)](https://travis-ci.org/zbalkan/AnagramExperiment)
+[![Build Status](https://travis-ci.org/zbalkan/AnagramExperiment.svg?branch=master)](https://travis-ci.org/zbalkan/AnagramExperiment)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffeldrim%2FAnagramExperiment?ref=badge_shield)
 
 ## Motivation
